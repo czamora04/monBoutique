@@ -10,7 +10,7 @@ import java.util.List;
 public interface BoutiqueService {
     
     // Se obtiene un listado de categorias en un List
-    public List<Boutique> getBoutique(boolean activos);
+    public List<Boutique> getBoutiques(boolean activos);
     
    // Se obtiene un Categoria, a partir del id de un categoria
     public Boutique getBoutique(Boutique categoria);

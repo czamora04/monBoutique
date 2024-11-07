@@ -6,7 +6,6 @@ package com.monBoutique.Controller;
 
 import com.monBoutique.domain.Boutique;
 import com.monBoutique.service.BoutiqueService;
-import com.monBoutique.service.ProductoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,12 +22,12 @@ public class PruebasController {
     @Autowired
     private ProductoService productoService;
     @Autowired
-    private BoutiqueService categoriaService;
+    private BoutiqueService boutiqueService;
 
     @GetMapping("/listado")
     public String listado(Model model) {
         var productos = productoService.getProductos(false);
-        var categorias = categoriaService.getBoutique(false);
+        var categorias = boutiqueService.getBoutiques(false);
         model.addAttribute("productos", productos);
         model.addAttribute("totalProductos", productos.size());
         model.addAttribute("categorias", categorias);
@@ -37,8 +36,8 @@ public class PruebasController {
 
     @GetMapping("/listado/{idCategoria}")
     public String listado(Model model, Boutique categoria) {
-        var productos = categoriaService.getBoutique(categoria).getProductos();
-        var categorias = categoriaService.getBoutique(false);
+        var productos = boutiqueService.getBoutique(categoria).getProductos();
+        var categorias = boutiqueService.getBoutiques(false);
         model.addAttribute("productos", productos);
         model.addAttribute("totalProductos", productos.size());
         model.addAttribute("categorias", categorias);

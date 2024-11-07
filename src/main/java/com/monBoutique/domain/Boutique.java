@@ -11,22 +11,26 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name="categoría")
+@Table(name = "categoría")
 public class Boutique implements Serializable {
-    
+
     private static final long serialVersionUID = 1L;
-    
+
     @Id
-    @GeneratedValue(strategy=GenerationType.IDENTITY)
-    @Column (name="id_Categoria")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_Categoria")
     private long idCategoria;
-    
+
     private String nombre;
-    @Column (name="ruta_imagen")    
+    @Column(name = "ruta_imagen")
     private String ruta_imagen;
     private boolean activo;
+
+    @OneToMany
+    @JoinColumn(name = "id_categoria")
+    List<Producto> productos;
     
-  public Boutique() {
+    public Boutique() {
     }
 
     public Boutique(String nombre, String ruta_imagen, boolean activo) {

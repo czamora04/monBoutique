@@ -20,7 +20,7 @@ public class BoutiqueServiceImpl implements BoutiqueService {
 
     @Override
     @Transactional(readOnly = true)
-    public List<Boutique> getBoutique(boolean activos) {
+    public List<Boutique> getBoutiques(boolean activos) {
         var lista = boutiqueDao.findAll();
         if (activos) {
             lista.removeIf(e -> !e.isActivo());
