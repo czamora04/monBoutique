@@ -25,7 +25,7 @@ public class BoutiqueController {
     
     @GetMapping("/listado")
     public String listado(Model model) {
-      var lista=BoutiqueService.getBoutique(false);
+      var lista=BoutiqueService.getBoutiques(false);
       model.addAttribute("categorias", lista);
       model.addAttribute("totalCategorias", lista.size());
       return "/categoria/listado";
@@ -36,19 +36,19 @@ public class BoutiqueController {
         return "/categoria/modifica";
     }
 
-    @Autowired
-    private FirebaseStorageServiceImpl firebaseStorageService;
+//    @Autowired
+//    private FirebaseStorageServiceImpl firebaseStorageService;
     
     @PostMapping("/guardar")
     public String categoriaGuardar(Boutique categoria,
             @RequestParam("imagenFile") MultipartFile imagenFile) {        
         if (!imagenFile.isEmpty()) {
             BoutiqueService.save(categoria);
-            categoria.setRutaImagen(
-                    firebaseStorageService.cargaImagen(
-                            imagenFile, 
-                            "categoria", 
-                            categoria.getIdCategoria()));
+//            categoria.setRutaImagen(
+//                    firebaseStorageService.cargaImagen(
+//                            imagenFile, 
+//                            "categoria", 
+//                            categoria.getIdCategoria()));
         }
         BoutiqueService.save(categoria);
         return "redirect:/categoria/listado";
