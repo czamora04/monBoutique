@@ -11,7 +11,7 @@ import lombok.Data;
 
 @Data
 @Entity
-@Table(name = "categoría")
+@Table(name = "categoria")
 public class Boutique implements Serializable {
 
     private static final long serialVersionUID = 1L;
