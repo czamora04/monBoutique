@@ -22,6 +22,7 @@ public class Boutique implements Serializable {
     private long idCategoria;
 
     private String nombre;
+    
     @Column(name = "ruta_imagen")
     private String ruta_imagen;
     private boolean activo;

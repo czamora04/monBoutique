@@ -16,49 +16,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
-    <!-- Header -->
-    <header th:fragment="header" class="header">
-        <!-- Mensaje de Bienvenida -->
-        <section class="py-2 text-center" style="background-color: #FFDEE9; color: #555;">
-            <div class="container">
-                <h5>Bienvenido a MonBoutique</h5>
-            </div>
-        </section>
+        <!-- Header -->
+        <header th:fragment="header" class="header">
+            <!-- Mensaje de Bienvenida -->
+            <section class="py-2 text-center" style="background-color: #FFDEE9; color: #555;">
+                <div class="container">
+                    <a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a>
+                </div>
+            </section>
 
-        <!-- Navbar con Buscador -->
-        <nav class="navbar navbar-expand-lg" style="background-color: #FFB5E8;">
-            <div class="container-fluid">
-                <a class="navbar-brand" th:href="@{/}" style="color: #555;">MonBoutique</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
-                    <ul class="navbar-nav">
-                        <li class="nav-item px-2">
-                            <a class="nav-link" th:href="@{/categoria/listado}" style="color: #555;">Categorías</a>
-                        </li>
-                        <li class="nav-item px-2">
-                            <a class="nav-link" th:href="@{/producto/listado}" style="color: #555;">Productos</a>
-                        </li>
-                        <li class="nav-item dropdown px-2">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #555;">
-                                Pruebas
-                            </a>
-                            <ul class="dropdown-menu" style="background-color: #FFDEE9;">
-                                <li><a class="dropdown-item" th:href="@{/pruebas/listado}" style="color: #555;">Asociaciones</a></li>
-                                <li><a class="dropdown-item" th:href="@{/pruebas/listado2}" style="color: #555;">Consultas</a></li>
-                            </ul>
-                        </li>
-                        <li class="nav-item px-2">
-                            <a class="nav-link" th:href="@{/usuario/listado}" style="color: #555;">Usuarios</a>
-                        </li>
-                    </ul>
-                    <!-- Buscador en la parte superior derecha -->
-                    <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Buscar..." aria-label="Buscar"/>
-                        <button class="btn btn-outline-light" type="submit">Buscar</button>
-                    </form>
-                    <ul class="navbar-nav">
+            <!-- Navbar con Buscador -->
+            <nav class="navbar navbar-expand-lg" style="background-color: #FFB5E8;">
+                <div class="container-fluid">
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                    <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
+                        <ul class="navbar-nav">
+                            <li class="nav-item px-2">
+                                <a class="nav-link" th:href="@{/categoria/listado}" style="color: #555;">[[#{plantilla.categorias}]]</a>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" th:href="@{/producto/listado}" style="color: #555;">[[#{plantilla.productos}]]</a>
+                            </li>
+                            <li class="nav-item dropdown px-2">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: #555;">
+                                    [[#{plantilla.pruebas}]]
+                                </a>
+                                <ul class="dropdown-menu" style="background-color: #FFDEE9;">
+                                    <li><a class="dropdown-item" th:href="@{/pruebas/listado}" style="color: #555;">[[#{plantilla.asociaciones}]]</a></li>
+                                    <li><a class="dropdown-item" th:href="@{/pruebas/listado2}" style="color: #555;">[[#{plantilla.consultas}]]</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item px-2">
+                                <a class="nav-link" th:href="@{/usuario/listado}" style="color: #555;">[[#{plantilla.usuarios}]]</a>
+                            </li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">[[#{plantilla.idioma}]]</a>
                                 <ul class="dropdown-menu dropdown-menu-dark">
@@ -67,36 +59,41 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 </ul>
                             </li>
                         </ul>
+                        <!-- Buscador en la parte superior derecha -->
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" aria-label="Buscar"/>
+                            <button class="btn btn-outline-light" type="submit">[[#{plantilla.buscar}]]</button>
+                        </form>
+                    </div>
                 </div>
+            </nav>
+            <style>
+
+                .nav-link, .navbar-brand {
+                    transition: color 0.3s;
+                }
+                .nav-link:hover, .navbar-brand:hover {
+                    color: #333;
+                }
+                .dropdown-item {
+                    transition: color 0.3s;
+                }
+                .dropdown-item:hover {
+                    color: #333;
+                }
+            </style>
+        </header>
+
+
+        <div style="min-height: 75vh;"></div>
+
+        <!-- Footer -->
+        <footer th:fragment="footer" class="p-4" style="background-color: #FFE4F2; color: #555;">
+            <div class="container text-center">
+                <p>&COPY;[[#{plantilla.derechos}]]</p>
             </div>
-        </nav>
-        <style>
-          
-            .nav-link, .navbar-brand {
-                transition: color 0.3s;
-            }
-            .nav-link:hover, .navbar-brand:hover {
-                color: #333; 
-            }
-            .dropdown-item {
-                transition: color 0.3s;
-            }
-            .dropdown-item:hover {
-                color: #333; 
-            }
-        </style>
-    </header>
-
-    
-    <div style="min-height: 75vh;"></div>
-
-    <!-- Footer -->
-    <footer th:fragment="footer" class="p-4" style="background-color: #FFE4F2; color: #555;">
-        <div class="container text-center">
-            <p>&COPY; 2024 MonBoutique. Todos los derechos reservados.</p>
-        </div>
-    </footer>
-</body>
-
+        </footer>
     </body>
+
+</body>
 </html>

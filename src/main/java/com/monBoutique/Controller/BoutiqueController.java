@@ -19,36 +19,36 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/categoria")
 public class BoutiqueController {
-    
+
     @Autowired
     private BoutiqueService BoutiqueService;
-    
+
     @GetMapping("/listado")
     public String listado(Model model) {
-      var lista=BoutiqueService.getBoutiques(false);
-      model.addAttribute("categorias", lista);
-      model.addAttribute("totalCategorias", lista.size());
-      return "/categoria/listado";
+        var lista = BoutiqueService.getBoutiques(false);
+        model.addAttribute("categorias", lista);
+        model.addAttribute("totalCategorias", lista.size());
+        return "/categoria/listado";
     }
-    
-        @GetMapping("/nuevo")
+
+    @GetMapping("/nuevo")
     public String categoriaNuevo(Boutique categoria) {
         return "/categoria/modifica";
     }
 
-//    @Autowired
-//    private FirebaseStorageServiceImpl firebaseStorageService;
-    
+    @Autowired
+    private FirebaseStorageServiceImpl firebaseStorageService;
+
     @PostMapping("/guardar")
     public String categoriaGuardar(Boutique categoria,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {        
+            @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
             BoutiqueService.save(categoria);
-//            categoria.setRutaImagen(
-//                    firebaseStorageService.cargaImagen(
-//                            imagenFile, 
-//                            "categoria", 
-//                            categoria.getIdCategoria()));
+            categoria.setRuta_imagen(
+                    firebaseStorageService.cargaImagen(
+                            imagenFile,
+                            "categoria",
+                            categoria.getIdCategoria()));
         }
         BoutiqueService.save(categoria);
         return "redirect:/categoria/listado";
@@ -67,4 +67,3 @@ public class BoutiqueController {
         return "/categoria/modifica";
     }
 }
-

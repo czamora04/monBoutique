@@ -131,7 +131,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                           class="was-validated"                          
                           enctype="multipart/form-data">
                         <input type="hidden" name="idCategoria" th:field="*{idCategoria}"/>
-                        <input type="hidden" name="rutaImagen" th:field="*{rutaImagen}"/>
+                        <input type="hidden" name="ruta_imagen" th:field="*{ruta_imagen}"/>
                         <section th:replace="~{categoria/fragmentos :: botonesEditar}"/>
                         <div id=details>
                             <div class="container">
@@ -143,9 +143,9 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                             </div>
                                             <div class="card-body">
                                                 <div class="mb-3">
-                                                    <label for="descripcion">[[#{categoria.descripcion}]]</label>
+                                                    <label for="nombre">[[#{categoria.nombre}]]</label>
                                                     <input type="text" class="form-control" 
-                                                           name="descripcion" th:field="*{descripcion}"
+                                                           name="nombre" th:field="*{nombre}"
                                                            required="true">
                                                 </div>
                                                 <div class="mb-3">
@@ -157,10 +157,10 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                                            th:field="*{activo}">
                                                 </div>
                                                 <div class="mb-3">
-                                                    <label for="imagen">[[#{categoria.rutaImagen}]]</label>
+                                                    <label for="ruta_imagen">[[#{categoria.rutaImagen}]]</label>
                                                     <input class="form-control" type="file" name="imagenFile"
                                                            onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${categoria.rutaImagen}}" alt="your image" height="200"/>
+                                                    <img id="blah" th:src="@{${categoria.ruta_imagen}}" alt="your image" height="200"/>
                                                 </div>
                                             </div>
                                         </div>

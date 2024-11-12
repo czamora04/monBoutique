@@ -21,42 +21,43 @@ import org.springframework.web.multipart.MultipartFile;
 @Controller
 @RequestMapping("/producto")
 public class ProductoController {
-    
+
     @Autowired
     private BoutiqueService boutiqueService;
-    
-      @Autowired
+
+    @Autowired
     private ProductoService productoService;
+
     @GetMapping("/listado")
     public String listado(Model model) {
-      var lista=productoService.getProductos(false);
-      
+        var lista = productoService.getProductos(false);
+
         var categorias = boutiqueService.getBoutiques(false);
         model.addAttribute("categorias", categorias);
-        
-      model.addAttribute("productos", lista);
-      model.addAttribute("totalProductos", lista.size());
-      return "/producto/listado";
+
+        model.addAttribute("productos", lista);
+        model.addAttribute("totalProductos", lista.size());
+        return "/producto/listado";
     }
-    
-        @GetMapping("/nuevo")
+
+    @GetMapping("/nuevo")
     public String productoNuevo(Producto producto) {
         return "/producto/modifica";
     }
 
-//    @Autowired
-//    private FirebaseStorageServiceImpl firebaseStorageService;
-    
+    @Autowired
+    private FirebaseStorageServiceImpl firebaseStorageService;
+
     @PostMapping("/guardar")
     public String productoGuardar(Producto producto,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {        
+            @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
             productoService.save(producto);
-//            producto.setRuta_Imagen(
-//                    firebaseStorageService.cargaImagen(
-//                            imagenFile, 
-//                            "producto", 
-//                            producto.getIdProducto()));
+            producto.setRuta_Imagen(
+                    firebaseStorageService.cargaImagen(
+                            imagenFile,
+                            "producto",
+                            producto.getIdProducto()));
         }
         productoService.save(producto);
         return "redirect:/producto/listado";
@@ -72,10 +73,10 @@ public class ProductoController {
     public String productoModificar(Producto producto, Model model) {
         producto = productoService.getProducto(producto);
         model.addAttribute("producto", producto);
-        
+
         var categorias = boutiqueService.getBoutiques(false);
         model.addAttribute("categorias", categorias);
-        
+
         return "/producto/modifica";
     }
 }
