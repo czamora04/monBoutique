@@ -43,12 +43,12 @@ public class BoutiqueController {
     public String categoriaGuardar(Boutique categoria,
             @RequestParam("imagenFile") MultipartFile imagenFile) {
         if (!imagenFile.isEmpty()) {
-            BoutiqueService.save(categoria);
             categoria.setRuta_imagen(
                     firebaseStorageService.cargaImagen(
                             imagenFile,
                             "categoria",
                             categoria.getIdCategoria()));
+            BoutiqueService.save(categoria);
         }
         BoutiqueService.save(categoria);
         return "redirect:/categoria/listado";
