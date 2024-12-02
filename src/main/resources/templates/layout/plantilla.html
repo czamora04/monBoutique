@@ -83,29 +83,90 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 }
             </style>
         </header>
-
-         <div>
-                        <ul class="navbar-nav" sec:authorize="!isAuthenticated()">
-                            <li class="nav-item px-2">
-                                <a class="nav-menu-link nav-link" th:href="@{/login}">
-                                    <i class='fas fa-sign-in-alt'></i>
-                                </a>
-                            </li>                            
-                        </ul>
-                        <ul class="navbar-nav" sec:authorize="isAuthenticated()">
-                            <li class="nav-item text-white my-auto">
-                                <img th:src="@{${session.usuarioImagen}}" alt="your image" height="40" class="rounded-circle"/>
-                                <span sec:authentication='name'>Santi</span>
-                            </li>
-                            <li class="nav-item my-auto">
-                                <form method="post" th:action="@{/logout}">
-                                    <button class="btn btn-dark">
-                                        <i class="fas fa-sign-out-alt"></i>
-                                    </button>
-                                </form>
-                            </li>                            
-                        </ul>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns="http://www.w3.org/1999/xhtml">
+    <head th:replace="~{layout/plantilla :: head}">
+        <title>Promoción de Accesorios para Bebés</title>
+        <meta charset="UTF-8"/>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    </head>
+    <body>
+        <header th:replace="~{layout/plantilla :: header}"></header>
+        
+        <!-- Sección de imagen promocional -->
+        <section>
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <!-- Imagen Portada -->
+                        <img src="portada.png" alt="Accesorios para Bebés" class="img-fluid">
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de categorías de productos -->
+        <section>
+            <div class="container my-5">
+                <h2 class="text-center">Categorías de Productos</h2>
+                <div class="row">
+                    <!-- Categoría Ropa de Niño -->
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="URL_DE_TU_IMAGEN_ROPA_NIÑO" class="card-img-top" alt="Ropa de Niño">
+                            <div class="card-body">
+                                <h5 class="card-title">Ropa de Niño</h5>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categoría Ropa de Niña -->
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="URL" class="card-img-top" alt="Ropa de Niña">
+                            <div class="card-body">
+                                <h5 class="card-title">Ropa de Niña</h5>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categoría Juguetes -->
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="URL" class="card-img-top" alt="Juguetes">
+                            <div class="card-body">
+                                <h5 class="card-title">Juguetes</h5>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Categoría Accesorios -->
+                    <div class="col-md-3">
+                        <div class="card">
+                            <img src="URL" class="card-img-top" alt="Accesorios para Bebés">
+                            <div class="card-body">
+                                <h5 class="card-title">Accesorios para Bebés</h5>
+                                <a href="#" class="btn btn-primary">Ver más</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer th:replace="~{layout/plantilla :: footer}"></footer>
+
+        <!-- Scripts -->
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    </body>
+</html>
+
 
         <div style="min-height: 75vh;"></div>
 
