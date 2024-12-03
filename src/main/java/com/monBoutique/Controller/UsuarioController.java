@@ -51,7 +51,7 @@ public class UsuarioController {
                     firebaseStorageService.cargaImagen(
                             imagenFile,
                             "usuario",
-                            usuario.getIdUsuario));
+                            usuario.getIdUsuario()));
         }
         usuarioService.save(usuario,true);
         return "redirect:/usuario/listado";
