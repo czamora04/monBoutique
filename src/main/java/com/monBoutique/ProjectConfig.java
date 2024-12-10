@@ -1,5 +1,5 @@
 package com.monBoutique;
-
+ 
 import java.util.Locale;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.MessageSource;
@@ -20,14 +20,14 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.i18n.LocaleChangeInterceptor;
 import org.springframework.web.servlet.i18n.SessionLocaleResolver;
-
+ 
 /**
- *
- * @author Carlos Zamora
- */
+*
+* @author Carlos Zamora
+*/
 @Configuration
 public class ProjectConfig implements WebMvcConfigurer {
-
+ 
     @Bean
     public LocaleResolver localeResolver() {
         var slr = new SessionLocaleResolver();
@@ -36,19 +36,16 @@ public class ProjectConfig implements WebMvcConfigurer {
         slr.setTimeZoneAttributeName("session.current.timezone");
         return slr;
     }
-    
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         var lci = new LocaleChangeInterceptor();
         lci.setParamName("lang");
         return lci;
     }
-    
     @Override
     public void addInterceptors(InterceptorRegistry registro) {
         registro.addInterceptor(localeChangeInterceptor());
     }
-    
     @Bean("messageSource")
     public MessageSource messageSource() {
         ResourceBundleMessageSource messageSource= new ResourceBundleMessageSource();
@@ -56,7 +53,6 @@ public class ProjectConfig implements WebMvcConfigurer {
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }
-    
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/").setViewName("index");
@@ -64,7 +60,7 @@ public class ProjectConfig implements WebMvcConfigurer {
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/registro/nuevo").setViewName("/registro/nuevo");
     }
-
+ 
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
@@ -95,7 +91,7 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .logout((logout) -> logout.permitAll());
         return http.build();
     }
-
+ 
     /* El siguiente método se utiliza para completar la clase no es 
     realmente funcional, la próxima semana se reemplaza con usuarios de BD */
     @Bean
@@ -117,13 +113,11 @@ public class ProjectConfig implements WebMvcConfigurer {
                 .build();
         return new InMemoryUserDetailsManager(user, sales, admin);
     }
-    
      @Autowired
     private UserDetailsService userDetailsService;
-
+ 
     @Autowired
     public void configurerGlobal(AuthenticationManagerBuilder build) throws Exception {
         build.userDetailsService(userDetailsService).passwordEncoder(new BCryptPasswordEncoder());
     }
 }
-
