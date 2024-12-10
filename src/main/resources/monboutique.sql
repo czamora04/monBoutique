@@ -72,3 +72,26 @@ INSERT INTO producto (id_producto,id_categoria,nombre,detalle,precio,existencias
 (29,5,'Camiseta','Natoque lacinia accumsan hendrerit pretium sociis imperdiet a, nullam ornare erat suspendisse praesent porta, euismod in augue tempus aliquet habitasse. Non accumsan nostra cras vestibulum augue facilisi auctor scelerisque suscipit, iaculis maecenas varius sollicitudin lacus netus et ultricies tincidunt, tortor curabitur tempor diam aliquet dis platea integer. Potenti aliquet erat neque vitae et sociis pretium, viverra euismod vivamus scelerisque metus est feugiat curae, parturient auctor aliquam pharetra nam congue.',2500,5,'https://www.trustedreviews.com/wp-content/uploads/sites/54/2022/09/LG-OLED-Flex-7-scaled.jpg',true),
 (30,5,'Set Medias','Primis quis sollicitudin ac himenaeos dui metus ridiculus, viverra vitae erat litora mauris eget, ut nisl platea feugiat inceptos cum. Diam vitae sem nulla commodo hendrerit duis dictum, tristique senectus maecenas eu augue dignissim lectus, eros cursus felis ornare nisl primis. Tempor facilisi ad scelerisque himenaeos nec ultrices interdum praesent, tincidunt mauris morbi nostra et parturient vivamus odio viverra, eget eu fermentum conubia vestibulum sagittis feugiat. Nulla mus dis rutrum feugiat imperdiet sociosqu non augue tempor sem, arcu natoque ridiculus odio dapibus quis ligula sagittis dui.',2500,5,'https://upload.wikimedia.org/wikipedia/commons/0/0c/AMD_Ryzen_9_3900X_-_ISO.jpg',true),
 (31,5,'Set Niño','Nullam porttitor vivamus phasellus tempus in morbi aliquet platea duis, nulla tristique inceptos pellentesque pulvinar congue sagittis euismod vitae lacinia, scelerisque mus orci sociosqu libero proin sed felis. Pretium tincidunt ultrices eu vel nam massa morbi diam sem, neque aliquet vehicula penatibus odio phasellus curabitur. Conubia natoque quis tellus scelerisque sociis facilisi nisi suspendisse, id interdum ornare vivamus proin himenaeos class sed in, suscipit torquent est aliquam orci nunc etiam. Congue et nisl magna cum id sociis enim suscipit integer, nisi egestas est porttitor sollicitudin commodo natoque pharetra torquent, aliquam euismod nam porta rhoncus non ante habitasse.',10000,3,'https://www.trustedreviews.com/wp-content/uploads/sites/54/2021/08/nokia-xr20-1.jpg',true);
+
+
+
+
+CREATE TABLE usuario (
+  id_usuario INT NOT NULL AUTO_INCREMENT,
+  username VARCHAR(20) NOT NULL,
+  password VARCHAR(512) NOT NULL,
+  nombre VARCHAR(20) NOT NULL,
+  apellidos VARCHAR(30) NOT NULL,
+  correo VARCHAR(75) NULL,
+  telefono VARCHAR(15) NULL,
+  activo BOOLEAN,
+  PRIMARY KEY (id_usuario)
+)
+ENGINE = InnoDB
+DEFAULT CHARACTER SET = utf8mb4;
+
+INSERT INTO usuario (id_usuario, username, password, nombre, apellidos, correo, telefono, activo) VALUES 
+(1, 'joseph', '$2a$10$abcdefg1234567890hijklm/OPQRSTUVzxy123456789WxyzA', 'Joseph', 'Rojas Antonio', 'jrojas@gmail.com', '1234-5678', true),
+(2, 'carlos', '$2a$10$hijklm1234567890abcdefg/WXYZqrstuvwxyz123456789OP', 'Carlos', 'Zamora Cespedes', 'czamora@gmail.com', '2345-6789', true),
+(3, 'yuliana', '$2a$10$mnopqr1234567890stuvwx/YZABCDEFGHIJKLM1234567890', 'Yuliana', 'Aguilar Fallas', 'yaguilar@gmail.com', '3456-7890', true),
+(4, 'maureem', '$2a$10$opqrst1234567890uvwxyz/ABCDEFGHIJKLM1234567890XY', 'Maureem', 'Bonilla Miranda', 'mbonilla@gmail.com', '4567-8901', true);
