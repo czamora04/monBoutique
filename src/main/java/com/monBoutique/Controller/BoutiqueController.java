@@ -30,6 +30,22 @@ public class BoutiqueController {
         model.addAttribute("totalCategorias", lista.size());
         return "/categoria/listado";
     }
+    
+    @GetMapping("/quienessomos")
+    public String quienesSomos(Model model) {
+        var lista = BoutiqueService.getBoutiques(false);
+        model.addAttribute("categorias", lista);
+        model.addAttribute("totalCategorias", lista.size());
+        return "/categoria/quienessomos";
+    }
+    
+    @GetMapping("/contactenos")
+    public String contactenos(Model model) {
+        var lista = BoutiqueService.getBoutiques(false);
+        model.addAttribute("categorias", lista);
+        model.addAttribute("totalCategorias", lista.size());
+        return "/categoria/contactenos";
+    }
 
     @GetMapping("/nuevo")
     public String categoriaNuevo(Boutique categoria) {

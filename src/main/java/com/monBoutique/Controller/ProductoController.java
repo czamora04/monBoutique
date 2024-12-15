@@ -39,6 +39,16 @@ public class ProductoController {
         model.addAttribute("totalProductos", lista.size());
         return "/producto/listado";
     }
+    
+    @GetMapping("/listado/{idCategoria}")
+    public String listado(Model model, Boutique categoria) {
+        var productos = boutiqueService.getBoutique(categoria).getProductos();
+        var categorias = boutiqueService.getBoutiques(false);
+        model.addAttribute("productos", productos);
+        model.addAttribute("totalProductos", productos.size());
+        model.addAttribute("categorias", categorias);
+        return "/producto/listado";
+    }
 
     @GetMapping("/nuevo")
     public String productoNuevo(Producto producto) {
@@ -60,13 +70,13 @@ public class ProductoController {
                             producto.getIdProducto()));
         }
         productoService.save(producto);
-        return "redirect:/producto/listado";
+        return "redirect:/categoria/listado";
     }
 
     @GetMapping("/eliminar/{idProducto}")
     public String productoEliminar(Producto producto) {
         productoService.delete(producto);
-        return "redirect:/producto/listado";
+        return "redirect:/categoria/listado";
     }
 
     @GetMapping("/modificar/{idProducto}")

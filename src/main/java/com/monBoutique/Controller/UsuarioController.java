@@ -43,16 +43,7 @@ public class UsuarioController {
     private FirebaseStorageService firebaseStorageService;
 
     @PostMapping("/guardar")
-    public String usuarioGuardar(Usuario usuario,
-            @RequestParam("imagenFile") MultipartFile imagenFile) {
-        if (!imagenFile.isEmpty()) {
-            usuarioService.save(usuario,false);
-            usuario.setRutaImagen(
-                    firebaseStorageService.cargaImagen(
-                            imagenFile,
-                            "usuario",
-                            usuario.getIdUsuario()));
-        }
+    public String usuarioGuardar(Usuario usuario) {
         usuarioService.save(usuario,true);
         return "redirect:/usuario/listado";
     }
