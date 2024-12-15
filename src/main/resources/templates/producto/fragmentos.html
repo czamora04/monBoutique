@@ -13,7 +13,7 @@
                     <div class="col-md-3">   
                         <button 
                             type="button" 
-                            class="btn btn-primary btn-block" 
+                            class="btn btn-sm btn-outline-secondary" 
                             data-bs-toggle="modal" 
                             data-bs-target="#agregarProducto">
                             <i class="fas fa-plus"></i> [[#{producto.agregar}]]
@@ -197,7 +197,7 @@
                                                     <label for="imagen">[[#{producto.imagen}]]</label>
                                                     <input class="form-control" type="file" name="imagenFile"
                                                            onchange="readURL(this);" />
-                                                    <img id="blah" th:src="@{${producto.rutaImagen}}" alt="your image" height="200"/>
+                                                    <img id="blah" th:src="@{${producto.ruta_Imagen}}" alt="your image" height="200"/>
                                                 </div>
                                                 <div class="mb-3">
                                                     <label for="activo">[[#{producto.activo}]]</label>
@@ -221,18 +221,18 @@
             <div class="container py-4 mb-4 bg-light">
                 <div class="row">
                     <div class="col-md-4 d-grid">
-                        <a th:href="@{/categoria/listado/}" class="btn btn-primary">
+                        <a th:href="@{/categoria/listado/}" class="btn btn-sm btn-outline-secondary">
                             <i class="fas fa-arrow-left"></i> [[#{accion.regresar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">                                
                         <a th:href="@{/producto/eliminar/}+${producto.idProducto}"
-                           class="btn btn-danger">
+                           class="btn btn-sm btn-outline-secondary">
                             <i class="fas fa-trash"></i> [[#{accion.eliminar}]]
                         </a>
                     </div>
                     <div class="col-md-4 d-grid">
-                        <button type="submit" class="btn btn-success">
+                        <button type="submit" class="btn btn-sm btn-outline-secondary">
                             <i class="fas fa-check"></i> [[#{accion.guardar}]]
                         </button>
                     </div>

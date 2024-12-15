@@ -16,6 +16,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
+<<<<<<< Updated upstream
     <!-- Header -->
 <header th:fragment="header" class="header">
     <!-- Mensaje de Bienvenida -->
@@ -60,6 +61,17 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                 
         </div>
     </section>
+=======
+        <!-- Header -->
+        <header th:fragment="header" class="header">
+            <!-- Mensaje de Bienvenida -->
+            <section class="py-2 text-center" style="background-color: #FFDEE9; color: #555;">
+                <div class="container">
+                    <h2><a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a></h2>
+                </div>
+
+            </section>
+>>>>>>> Stashed changes
 
             <!-- Navbar con Buscador -->
             <nav class="navbar navbar-expand-lg" style="background-color: #FFB5E8;">
@@ -118,6 +130,14 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
                                 </li>                            
                             </ul>
                         </div>
+                        <form action="/carrito/listado">
+                            <button
+                                type="submit"
+                                class="btn btn-sm btn-outline-secondary">
+                                <i class="fas fa-cart-plus"></i>
+                                [[#{carrito.verCarrito}]] [[${listaTotal}]]
+                            </button>
+                        </form>
                     </div>
                 </div>
             </nav>
