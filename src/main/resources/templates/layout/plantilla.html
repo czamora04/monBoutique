@@ -16,15 +16,50 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
         <script th:src="@{/webjars/bootstrap/js/bootstrap.min.js}"></script>
     </head>
     <body>
-        <!-- Header -->
-        <header th:fragment="header" class="header">
-            <!-- Mensaje de Bienvenida -->
-            <section class="py-2 text-center" style="background-color: #FFDEE9; color: #555;">
-                <div class="container">
-                    <a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a>
-                </div>
-
-            </section>
+    <!-- Header -->
+<header th:fragment="header" class="header">
+    <!-- Mensaje de Bienvenida -->
+    <section class="py-2 text-center d-flex align-items-center justify-content-between" style="background-color: #FFDEE9; color: #555;">
+        <div class="container d-flex justify-content-between align-items-center">
+            <a th:href="@{/}" class="navbar-brand">[[#{aplicacion.titulo}]]</a>
+            <!-- Logotipo -->
+            <img src="monboutique.jpg" alt="Mon Boutique Logo" class="header-logo">
+                
+            <style>
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #FFDEE9;
+        }
+        .header-logo img {
+            height: 50px;
+            object-fit: contain;
+        }
+        .navbar {
+            background-color: #FFB5E8;
+        }
+        .nav-link, .navbar-brand {
+            color: #555;
+            transition: color 0.3s;
+        }
+        .nav-link:hover, .navbar-brand:hover {
+            color: #333;
+        }
+        .dropdown-item {
+            transition: color 0.3s;
+        }
+        .dropdown-item:hover {
+            color: #333;
+        }
+    </style>    
+                
+                
+                
+                
+        </div>
+    </section>
 
             <!-- Navbar con Buscador -->
             <nav class="navbar navbar-expand-lg" style="background-color: #FFB5E8;">
